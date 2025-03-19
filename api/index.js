@@ -9,6 +9,7 @@ import authRouter from "./routes/auth.route.js";
 dotenv.config(); // Load environment variables early
 connectDB();
 
+// Creates the express app
 const app = express();
 
 // Middleware
@@ -19,11 +20,17 @@ app.use(cookieParser()); // Enable cookie parsing
 const loginLimiter = rateLimit({
   windowMs: 60 * 1000, // 1 minute
   max: 5, // Limit each IP to 5 requests per windowMs
-  message: "Too many login attempts. Please try again later.",
+  handler: (req, res) => {
+    res.status(429).json({
+      success: false,
+      message:
+        "Too many login attempts. Please wait a minute before trying again.",
+    });
+  },
 });
 
-// Routes
-app.use("/api/auth", authRouter);
+// Routes (handles client requests and sends responses)
+app.use("/api/auth", loginLimiter, authRouter);
 app.use("/api/user", userRouter);
 
 // Handle unknown routes
