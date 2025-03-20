@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+.bg-custom-purple {
+    background-color: #F8F2FE;
+}
+
+.bg-custom-purple-button{
+    background-color: #8e24aa;
+}
+
+.text-custom-purple{
+    color: #8e24aa;
+}
+
+.text-custom-navBar-purple{
+    color: #AA00FF;
+}
+
+body{
+    background-color: #F8F2FE;
+}
