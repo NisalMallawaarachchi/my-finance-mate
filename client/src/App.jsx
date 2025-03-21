@@ -1,12 +1,14 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Header from "./components/Header";
+
 import Dashboard from "./pages/Dashboard";
 import Sidebar from "./components/Sidebar";
+import Income from "./pages/Income";
+
 
 export default function App() {
   return (
@@ -25,7 +27,7 @@ function AppContent() {
       {location.pathname === "/dashboard" && <Sidebar />}
 
       <div className="flex-1">
-        <Header />
+        
 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -34,6 +36,8 @@ function AppContent() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/income" element={<Income />} />
+
         </Routes>
       </div>
     </div>
