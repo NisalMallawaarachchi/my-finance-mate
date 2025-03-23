@@ -4,6 +4,8 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AuthLayout from "./AuthLayout";
+
 
 export default function SignIn() {
   const [formData, setFormData] = useState({
@@ -92,7 +94,8 @@ export default function SignIn() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="relative min-h-screen">
+      <div className="absolute left-100 bottom-50 p-4 min-w-screen">
       <ToastContainer />
       <div className="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
@@ -102,7 +105,7 @@ export default function SignIn() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email Input */}
           <div className="flex items-center border-b border-gray-300 py-2">
-            <FaEnvelope className="text-emerald-500 mr-2" />
+            <FaEnvelope className="text-custom-purple mr-2" />
             <input
               type="email"
               name="email"
@@ -116,7 +119,7 @@ export default function SignIn() {
 
           {/* Password Input with Toggle */}
           <div className="flex items-center border-b border-gray-300 py-2 relative">
-            <FaLock className="text-emerald-500 mr-2" />
+            <FaLock className="text-custom-purple mr-2" />
             <input
               type={showPassword ? "text" : "password"}
               name="password"
@@ -129,7 +132,7 @@ export default function SignIn() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-2 text-gray-500 hover:text-emerald-500 transition duration-200"
+              className="absolute right-2 text-gray-500 hover:text-custom-purple transition duration-200"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
@@ -139,7 +142,7 @@ export default function SignIn() {
           <button
             disabled={loading}
             type="submit"
-            className="w-full bg-emerald-500 hover:bg-emerald-700 text-white py-2 rounded-lg font-semibold transition duration-300"
+            className="w-full bg-custom-purple-button hover:bg-custom-purple-button text-white py-2 rounded-lg font-semibold transition duration-300"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
@@ -169,11 +172,14 @@ export default function SignIn() {
         {/* Don't have an account? */}
         <p className="text-center text-gray-600 mt-4">
           Don&apos;t have an account?{" "}
-          <Link to="/signup" className="text-emerald-500 font-semibold">
+          <Link to="/signup" className="text-custom-purple font-semibold">
             Sign up
           </Link>
         </p>
       </div>
+      </div>
+      <AuthLayout/>
+      
     </div>
   );
 }
