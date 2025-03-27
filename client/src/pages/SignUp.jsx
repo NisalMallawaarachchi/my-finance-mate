@@ -4,7 +4,6 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AuthLayout from "./AuthLayout";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -71,7 +70,7 @@ export default function SignUp() {
       });
 
       setTimeout(() => {
-        navigate("/signin");
+        navigate("/sign-in");
       }, 2000);
     } catch (error) {
       console.error("Error:", error.message);
@@ -195,7 +194,6 @@ export default function SignUp() {
           </Link>
         </p>
       </div>
-      <AuthLayout/>
     </div>
   );
 }
