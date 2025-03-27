@@ -4,8 +4,12 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AuthLayout from "./AuthLayout";
-
+import { useDispatch } from "react-redux";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/userSlice";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({
@@ -16,6 +20,7 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // Handle input change
   const handleChange = (e) => {
@@ -49,6 +54,7 @@ export default function SignIn() {
     setLoading(true);
 
     try {
+      dispatch(signInStart());
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
@@ -57,10 +63,13 @@ export default function SignIn() {
         body: JSON.stringify(formData),
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.message || "Invalid email or password.");
+        throw new Error(data.message || "Invalid email or password.");
       }
+
+      dispatch(signInSuccess(data));
 
       toast.success("Sign-in successful!", {
         position: "top-center",
@@ -71,8 +80,8 @@ export default function SignIn() {
       }, 2000);
     } catch (error) {
       console.error("Error:", error.message);
+      dispatch(signInFailure(error.message));
 
-      // Improve error messages
       let userFriendlyMessage = error.message;
       if (error.message.includes("Failed to fetch")) {
         userFriendlyMessage = "Network error. Please check your connection.";
@@ -87,15 +96,13 @@ export default function SignIn() {
     }
   };
 
-  // Handle Google Sign-In (Placeholder function)
+  // Handle Google Sign-In
   const handleGoogleSignIn = () => {
-    console.log("Google Sign-In Clicked!");
-    // Add Google authentication logic here
+    window.open("/api/auth/google", "_self");
   };
 
   return (
-    <div className="relative min-h-screen">
-      <div className="absolute left-100 bottom-50 p-4 min-w-screen">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <ToastContainer />
       <div className="bg-white p-8 rounded-2xl shadow-lg max-w-md w-full">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
@@ -105,7 +112,7 @@ export default function SignIn() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email Input */}
           <div className="flex items-center border-b border-gray-300 py-2">
-            <FaEnvelope className="text-custom-purple mr-2" />
+            <FaEnvelope className="text-emerald-500 mr-2" />
             <input
               type="email"
               name="email"
@@ -119,7 +126,7 @@ export default function SignIn() {
 
           {/* Password Input with Toggle */}
           <div className="flex items-center border-b border-gray-300 py-2 relative">
-            <FaLock className="text-custom-purple mr-2" />
+            <FaLock className="text-emerald-500 mr-2" />
             <input
               type={showPassword ? "text" : "password"}
               name="password"
@@ -128,21 +135,32 @@ export default function SignIn() {
               value={formData.password}
               onChange={handleChange}
               required
+              minLength="6"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-2 text-gray-500 hover:text-custom-purple transition duration-200"
+              className="absolute right-2 text-gray-500 hover:text-emerald-500 transition duration-200"
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
+          </div>
+
+          {/* Forgot Password Link */}
+          <div className="text-right">
+            <Link
+              to="/forgot-password"
+              className="text-sm text-emerald-500 hover:underline"
+            >
+              Forgot password?
+            </Link>
           </div>
 
           {/* Submit Button */}
           <button
             disabled={loading}
             type="submit"
-            className="w-full bg-custom-purple-button hover:bg-custom-purple-button text-white py-2 rounded-lg font-semibold transition duration-300"
+            className="w-full bg-emerald-500 hover:bg-emerald-700 text-white py-2 rounded-lg font-semibold transition duration-300 disabled:opacity-70"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
@@ -172,14 +190,14 @@ export default function SignIn() {
         {/* Don't have an account? */}
         <p className="text-center text-gray-600 mt-4">
           Don&apos;t have an account?{" "}
-          <Link to="/signup" className="text-custom-purple font-semibold">
+          <Link
+            to="/signup"
+            className="text-emerald-500 font-semibold hover:underline"
+          >
             Sign up
           </Link>
         </p>
       </div>
-      </div>
-      <AuthLayout/>
-      
     </div>
   );
 }
