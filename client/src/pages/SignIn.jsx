@@ -146,16 +146,6 @@ export default function SignIn() {
             </button>
           </div>
 
-          {/* Forgot Password Link */}
-          <div className="text-right">
-            <Link
-              to="/forgot-password"
-              className="text-sm text-emerald-500 hover:underline"
-            >
-              Forgot password?
-            </Link>
-          </div>
-
           {/* Submit Button */}
           <button
             disabled={loading}
