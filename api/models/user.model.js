@@ -14,7 +14,11 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    avatar: {
+        type: String,
+        default: 'https://pixabay.com/photos/ai-generated-man-face-hoodie-youth-8083323/' 
+    }, 
 }, 
 { timestamps: true } // Automatically adds createdAt & updatedAt
 );
