@@ -24,12 +24,11 @@ const Expense = () => {
   }, []);
 
   const fetchExpenses = async () => {
-    const response = await fetch('http://localhost:3000/api/expenses'); //axios
+    const response = await fetch('http://localhost:3000/api/expenses');
     const data = await response.json();
     setExpenses(data);
     setFilteredExpenses(data);
   };
-
 
   useEffect(() => {
     const filtered = expenses.filter((expense) =>
@@ -39,7 +38,7 @@ const Expense = () => {
     setFilteredExpenses(filtered);
   }, [searchQuery, expenses]);
 
-
+  // Filter expenses for the graph based on selected year and month
   const expensesForGraph = expenses.filter((expense) => {
     const expenseDate = new Date(expense.date);
     const expenseYear = expenseDate.getFullYear();
@@ -51,15 +50,34 @@ const Expense = () => {
     return yearMatch && monthMatch;
   });
 
+  // Aggregate expenses by date and sum their amounts
+  const aggregatedExpenses = expensesForGraph.reduce((acc, expense) => {
+    const expenseDate = new Date(expense.date);
+    // Normalize date to YYYY-MM-DD format for grouping
+    const dateKey = expenseDate.toISOString().split('T')[0]; // e.g., "2025-03-30"
+
+    if (!acc[dateKey]) {
+      acc[dateKey] = {
+        date: expenseDate,
+        totalAmount: 0,
+      };
+    }
+    acc[dateKey].totalAmount += Number(expense.amount);
+    return acc;
+  }, {});
+
+  // Convert aggregated data to arrays for the graph, sorted by date
+  const aggregatedData = Object.values(aggregatedExpenses)
+    .sort((a, b) => a.date - b.date); // Sort by date ascending
 
   const graphData = {
-    labels: expensesForGraph.map((exp) => new Date(exp.date).toLocaleDateString()),
+    labels: aggregatedData.map((entry) => entry.date.toLocaleDateString()),
     datasets: [
       {
         label: selectedMonth
           ? `Expenses in ${new Date(selectedYear, selectedMonth - 1).toLocaleString('default', { month: 'long' })} ${selectedYear}`
           : `Expenses in ${selectedYear}`,
-        data: expensesForGraph.map((exp) => exp.amount),
+        data: aggregatedData.map((entry) => entry.totalAmount),
         borderColor: '#8B5CF6', // Purple theme
         backgroundColor: 'rgba(139, 92, 246, 0.2)',
         fill: true,
@@ -106,32 +124,26 @@ const Expense = () => {
     },
   };
 
-
   const handleDelete = async (id) => {
     await fetch(`http://localhost:3000/api/expenses/${id}`, { method: 'DELETE' });
     fetchExpenses();
   };
-
 
   const openModal = (expense = null) => {
     setSelectedExpense(expense);
     setIsModalOpen(true);
   };
 
-
   const handleYearChange = (e) => {
     setSelectedYear(parseInt(e.target.value));
     setSelectedMonth('');
   };
 
-
   const handleMonthChange = (e) => {
     setSelectedMonth(e.target.value);
   };
 
-
   const years = [...new Set(expenses.map((exp) => new Date(exp.date).getFullYear()))].sort();
-
 
   const months = [
     { value: '', label: 'All Months' },
@@ -148,7 +160,7 @@ const Expense = () => {
     { value: '11', label: 'November' },
     { value: '12', label: 'December' },
   ];
-  
+
   const currentMonthExpenses = filteredExpenses.filter((expense) => {
     const expenseDate = new Date(expense.date);
     const currentDate = new Date();
@@ -162,7 +174,6 @@ const Expense = () => {
 
   return (
     <div className="expense-container">
-
       <div className="top-buttons">
         <Link to="/offers">
           <button className="best-offers">Best Offers</button>
@@ -195,14 +206,12 @@ const Expense = () => {
         </button>
       </div>
 
-      
       <div className="graph-section">
         <h3>EXPENSE OVERVIEW</h3>
         <p>Track your spending trends over time and gain insights into where your money goes</p>
         <Line data={graphData} options={graphOptions} />
       </div>
 
-      
       <div className="expense-list">
         <div className="expense-list-header">
           <h3>{viewAll ? "All Expenses" : "This Month's Expenses"}</h3>
@@ -222,14 +231,12 @@ const Expense = () => {
           </p>
         ) : (
           <>
-          
             <div className="expense-grid-header">
               <span>Name</span>
               <span>Date</span>
               <span>Amount</span>
               <span>Actions</span>
             </div>
-          
             {displayedExpenses.map((expense) => (
               <div key={expense._id} className="expense-row">
                 <span>{expense.name}</span>
@@ -247,7 +254,7 @@ const Expense = () => {
         )}
       </div>
       <Footer />
-      
+
       {isModalOpen && (
         <AddExpenseModal
           isOpen={isModalOpen}

@@ -100,3 +100,75 @@
 .budget-actions button:hover {
     background-color: #574bff;
 }
+
+/* src/index.css */
+
+/* Import any other global styles if needed */
+
+
+/* Base styles for the app */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure the app container takes up the full height */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom styles for react-toastify */
+.Toastify__toast-container {
+  z-index: 9999; /* Ensure toasts appear above other elements */
+}
+
+.Toastify__toast--success {
+  background-color: #6D28D9 !important; /* Darker purple background */
+  color: white !important;
+  font-weight: bold !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3) !important;
+}
+
+.Toastify_toast--success .Toastify_toast-body {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.Toastify__progress-bar--success {
+  background-color: #8B5CF6 !important; /* Purple progress bar */
+}
+
+.Toastify__close-button--success {
+  color: white !important;
+  opacity: 0.8;
+}
+
+.Toastify__close-button--success:hover {
+  opacity: 1;
+}
+
+.Toastify__toast--error {
+  background-color: #FF0000 !important; /* Red background */
+  color: white !important;
+  font-weight: bold !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3) !important;
+}
+
+.Toastify__progress-bar--error {
+  background-color: #CC0000 !important; /* Darker red progress bar */
+}
+
+.Toastify__close-button--error {
+  color: white !important;
+  opacity: 0.8;
+}
+
+.Toastify__close-button--error:hover {
+  opacity: 1;
+}
