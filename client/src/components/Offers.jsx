@@ -9,7 +9,7 @@ import './Offers.css';
  import homeUtilitiesImg from '../assets/home.png';
  import otherImg from '../assets/other.png'; 
  import shoppingEntertainmentImg from '../assets/enter.png';
- import transportationImg from '../assets/edu.jpg';
+ import transportationImg from '../assets/trans.png';
 //import { default as educationImg, default as foodDiningImg, default as healthInsuranceImg, default as homeUtilitiesImg, default as otherImg, default as shoppingEntertainmentImg, default as transportationImg } from '../assets/edu.jpg'; // Matches "Education"
 import Footer from './Footer';
 
