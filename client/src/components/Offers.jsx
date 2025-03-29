@@ -43,7 +43,7 @@ const Offers = () => {
 
   return (
     <div className="offers-container">
-      <h2 className="offers-title">Offers</h2>
+      <h2 className="offers-title">Best Offers</h2>
       <div className="offers-grid">
         {offerCategories.map((category) => (
           <div
