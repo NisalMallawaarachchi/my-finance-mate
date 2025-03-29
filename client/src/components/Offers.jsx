@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import './Offers.css';
 
 // Import images from the assets directory
-// import educationImg from '../assets/edu.jpg'; // Matches "Education"
-// import foodDiningImg from '../assets/edu.jpg';
-// import healthInsuranceImg from '../assets/edu.jpg';
-// import homeUtilitiesImg from '../assets/edu.jpg';
-// import otherImg from '../assets/edu.jpg'; // Matches "Other"
-// import shoppingEntertainmentImg from '../assets/edu.jpg';
-// import transportationImg from '../assets/edu.jpg';
-import { default as educationImg, default as foodDiningImg, default as healthInsuranceImg, default as homeUtilitiesImg, default as otherImg, default as shoppingEntertainmentImg, default as transportationImg } from '../assets/edu.jpg'; // Matches "Education"
+ import educationImg from '../assets/edu.jpg'; 
+ import foodDiningImg from '../assets/food.png';
+ import healthInsuranceImg from '../assets/health.png';
+ import homeUtilitiesImg from '../assets/home.png';
+ import otherImg from '../assets/other.png'; 
+ import shoppingEntertainmentImg from '../assets/enter.png';
+ import transportationImg from '../assets/edu.jpg';
+//import { default as educationImg, default as foodDiningImg, default as healthInsuranceImg, default as homeUtilitiesImg, default as otherImg, default as shoppingEntertainmentImg, default as transportationImg } from '../assets/edu.jpg'; // Matches "Education"
 import Footer from './Footer';
 
 // Map offer categories to their respective images

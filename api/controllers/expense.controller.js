@@ -2,7 +2,7 @@ import Expense from '../models/Expense.model.js';
 
 export const getExpenses = async (req, res) => {
     try {
-        const expenses = await Expense.find().sort({ date: -1 });
+        const expenses = await Expense.find().sort({ date: -1 });//desc order
         res.status(200).json(expenses);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -11,7 +11,7 @@ export const getExpenses = async (req, res) => {
 
 export const addExpense = async (req, res) => {
     try {
-        const expense = new Expense(req.body);
+        const expense = new Expense(req.body); //new json object
         await expense.save();
         res.status(201).json(expense);
     } catch (error) {
