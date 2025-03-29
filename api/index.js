@@ -1,16 +1,23 @@
-import express from "express";
-import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from 'cors';
+import dotenv from "dotenv";
+import express from "express";
 import rateLimit from "express-rate-limit";
 import connectDB from "./db.js";
-import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
-
+import expenseRoutes from './routes/expense.route.js';
+import userRouter from "./routes/user.route.js";
 dotenv.config(); // Load environment variables early
 connectDB();
 
 // Creates the express app
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
+  allowedHeaders: ['Content-Type'], // Allow these headers
+}));
 
 // Middleware
 app.use(express.json());
@@ -32,6 +39,7 @@ const loginLimiter = rateLimit({
 // Routes (handles client requests and sends responses)
 app.use("/api/auth", loginLimiter, authRouter);
 app.use("/api/user", userRouter);
+app.use('/api/expenses', expenseRoutes);
 
 // Handle unknown routes
 app.use("*", (req, res) => {
