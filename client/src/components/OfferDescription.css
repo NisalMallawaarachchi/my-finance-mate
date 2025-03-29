@@ -1,0 +1,72 @@
+.offer-description-container {
+    padding: 20px;
+    background-color: #F5F3FF;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .back-btn {
+    background-color: #8B5CF6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  .back-btn:hover {
+    background-color: #6D28D9;
+  }
+  
+  .offer-description-content {
+    display: flex;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(139, 92, 246, 0.1);
+  }
+  
+  .offer-description-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .offer-description-text {
+    flex: 1;
+  }
+  
+  .offer-description-title {
+    color: #4B0082;
+    margin-bottom: 10px;
+  }
+  
+  .offer-description-text {
+    color: #6D28D9; 
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .claim-offer-btn {
+    background-color: #8B5CF6; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .claim-offer-btn:hover {
+    background-color: #6D28D9;
+  }
