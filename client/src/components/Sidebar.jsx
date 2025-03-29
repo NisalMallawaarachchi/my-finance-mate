@@ -21,7 +21,7 @@ const Sidebar = () => {
                 <NavLink to="/dashboard" location={location}>📊 Dashboard</NavLink>
                 <NavLink to="/profile" location={location}>👤 User Profile</NavLink>
                 <NavLink to="/income" location={location}>💰 Income</NavLink>
-                <NavLink to="#" location={location}>🛒 Expense</NavLink>
+                <NavLink to="/expense" location={location}>🛒 Expense</NavLink>
                 <NavLink to="/budget" location={location}>📋 Budget</NavLink>
                 <NavLink to="#" location={location}>🔓 Logout</NavLink>
             </div>
