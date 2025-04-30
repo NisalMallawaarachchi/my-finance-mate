@@ -5,12 +5,19 @@ import rateLimit from "express-rate-limit";
 import connectDB from "./db.js";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
+import budgetRouter from "./routes/budget.route.js";
+import cors from "cors";
 
 dotenv.config(); // Load environment variables early
 connectDB();
 
 // Creates the express app
 const app = express();
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 
 // Middleware
 app.use(express.json());
@@ -32,6 +39,7 @@ const loginLimiter = rateLimit({
 // Routes (handles client requests and sends responses)
 app.use("/api/auth", loginLimiter, authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/budget", budgetRouter);
 
 // Handle unknown routes
 app.use("*", (req, res) => {
