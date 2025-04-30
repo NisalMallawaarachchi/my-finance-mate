@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Profile from "./pages/Profile";
 import Budget from "./pages/Budget";
 import Dashboard from "./pages/Dashboard";
+import Income from "./pages/Income";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/budget" element={<Budget />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/income" element={<Income />} />
       </Routes>
     </BrowserRouter>
   );
