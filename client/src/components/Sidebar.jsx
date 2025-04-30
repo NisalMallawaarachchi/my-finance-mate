@@ -177,6 +177,7 @@ const NavLink = ({ to, icon, label, collapsed, badge }) => {
       title={collapsed ? label : ""}
     >
       <span className={`${isActive ? "text-white" : "text-purple-300"}`}>
+
         {icon}
       </span>
       {!collapsed && <span>{label}</span>}
