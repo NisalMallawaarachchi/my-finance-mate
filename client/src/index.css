@@ -133,3 +133,63 @@
     /* or */
     border: 2px solid var(--purple-500); /* Using CSS variables */
   }
+
+  .add-budget {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.add-budget input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 150px;
+}
+
+.add-budget button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-budget button:hover {
+    background-color: #574bff;
+}
+
+.budget-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.budget-item {
+    background-color: #f3f4f6;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.budget-info span {
+    margin-right: 10px;
+}
+
+.budget-actions button {
+    padding: 5px 10px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.budget-actions button:hover {
+    background-color: #574bff;
+}
