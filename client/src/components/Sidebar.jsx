@@ -35,7 +35,7 @@ const Sidebar = () => {
   const handleLogout = () => {
     // Add your logout logic here
     console.log("User logged out");
-    navigate("/login");
+    navigate("/signin");
   };
 
   const toggleSidebar = () => {
