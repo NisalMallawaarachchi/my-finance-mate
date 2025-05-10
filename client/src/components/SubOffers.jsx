@@ -2,157 +2,136 @@ import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './SubOffers.css';
 
-//import subOfferImg from '../assets/edu.jpg';
+// Importing images
 import Footer from './Footer';
 
- import bikeRentalDiscountImg from '../assets/edu.jpg';
- import bookPurchaseOfferImg from '../assets/edu.jpg';
- import carMaintenanceDealImg from '../assets/edu.jpg';
- import carRentalDiscountImg from '../assets/edu.jpg';
- import charityDonationDiscountImg from '../assets/edu.jpg';
- import concertTicketOfferImg from '../assets/edu.jpg';
- import dentalCareDealImg from '../assets/edu.jpg';
- import electricityBillDiscountImg from '../assets/edu.jpg';
- import electronicsDiscountImg from '../assets/edu.jpg';
- import eventTicketDiscountImg from '../assets/edu.jpg';
- import examPrepOfferImg from '../assets/edu.jpg';
- import eyeCheckupOfferImg from '../assets/edu.jpg';
- import fashionSaleImg from '../assets/edu.jpg';
- import fuelCashbackImg from '../assets/edu.jpg';
- import gamingSubscriptionDealImg from '../assets/edu.jpg';
- import gasBillCashbackImg from '../assets/edu.jpg';
- import giftCardOfferImg from '../assets/edu.jpg';
- import gymMembershipDiscountImg from '../assets/edu.jpg';
- import healthCheckupDiscountImg from '../assets/edu.jpg';
- import homeCleaningServiceImg from '../assets/edu.jpg';
- import insurancePremiumOfferImg from '../assets/edu.jpg';
- import internetPlanDealImg from '../assets/edu.jpg';
- import languageCourseDealImg from '../assets/edu.jpg';
- import miscellaneousCashbackImg from '../assets/edu.jpg';
- import movieTicketDiscountImg from '../assets/edu.jpg';
- import onlineCourseDiscountImg from '../assets/edu.jpg';
- import pharmacyCashbackImg from '../assets/edu.jpg';
- import plumbingServiceDiscountImg from '../assets/edu.jpg';
- import publicTransportPassImg from '../assets/edu.jpg';
- import restaurantDiscountImg from '../assets/foodadd1.png';
- import foodDeliveryOfferImg from '../assets/foodadd2.png';
- import groceryCashbackImg from '../assets/foodadd3.png';
- import cafeVoucherImg from '../assets/foodadd4.png';
- import mealSubscriptionDealImg from '../assets/foodadd5.png';
- import fastFoodComboOfferImg from '../assets/foodadd6.png';
- import shoppingVoucherImg from '../assets/edu.jpg';
- import stationeryDiscountImg from '../assets/edu.jpg';
- import subscriptionServiceOfferImg from '../assets/edu.jpg';
- import taxiRideOfferImg from '../assets/edu.jpg';
- import travelPackageDealImg from '../assets/edu.jpg';
- import tuitionFeeCashbackImg from '../assets/edu.jpg';
- import waterBillOfferImg from '../assets/edu.jpg';
+import h1_Img from '../assets/1-h/h1.png';
+import h2_Img from '../assets/1-h/h2.png';
+import h3_Img from '../assets/f1.png';
+import h4_Img from '../assets/f1.png';
+import h5_Img from '../assets/f1.png';
+import h6_Img from '../assets/f1.png';
 
-// Placeholder sub-offers data
+import t1_Img from '../assets/f1.png';
+import t2_Img from '../assets/f1.png';
+import t3_Img from '../assets/f1.png';
+import t4_Img from '../assets/f1.png';
+import t5_Img from '../assets/f1.png';
+import t6_Img from '../assets/f1.png';
+
+import f1_Img from '../assets/f1.png';
+import f2_Img from '../assets/foodadd2.png';
+import f3_Img from '../assets/foodadd3.png';
+import f4_Img from '../assets/foodadd4.png';
+import f5_Img from '../assets/foodadd5.png';
+import f6_Img from '../assets/foodadd6.png';
+
+import hi1_Img from '../assets/f1.png';
+import hi2_Img from '../assets/f1.png';
+import hi3_Img from '../assets/f1.png';
+import hi4_Img from '../assets/f1.png';
+import hi5_Img from '../assets/f1.png';
+import hi6_Img from '../assets/f1.png';
+
+import se1_Img from '../assets/f1.png';
+import se2_Img from '../assets/f1.png';
+import se3_Img from '../assets/f1.png';
+import se4_Img from '../assets/f1.png';
+import se5_Img from '../assets/f1.png';
+import se6_Img from '../assets/f1.png';
+
+import e1_Img from '../assets/f1.png';
+import e2_Img from '../assets/f1.png';
+import e3_Img from '../assets/f1.png';
+import e4_Img from '../assets/f1.png';
+import e5_Img from '../assets/f1.png';
+import e6_Img from '../assets/f1.png';
+
+import o1_Img from '../assets/f1.png';
+import o2_Img from '../assets/f1.png';
+import o3_Img from '../assets/f1.png';
+import o4_Img from '../assets/f1.png';
+import o5_Img from '../assets/f1.png';
+import o6_Img from '../assets/f1.png';
+
+// Placeholder sub-offers data with links
 const subOffersData = {
   'home-utilities': [
-    'Electricity Bill Discount',
-    'Water Bill Offer',
-    'Internet Plan Deal',
-    'Gas Bill Cashback',
-    'Home Cleaning Service',
-    'Plumbing Service Discount',
+    { name: 'h1', link: 'https://www.genie.lk/promotions/pay-via-genie-using-any-mastercard-and-get-up-to-25-discount-on-ceb-leco-water-bill-payments/#:~:text=Pay%20via%20genie%20using%20any,Any%20other%20Mastercard%20:%2015%25%20Discount' },
+    { name: 'h2', link: 'https://web.facebook.com/hayleyssolar/photos/now-its-easier-to-switch-to-solar-energywith-hayleys-solar-you-can-now-upgrade-t/997453124049693/?_rdc=1&_rdr#' },
+    { name: 'h3', link: 'https://example.com/home-utilities/h3' },
+    { name: 'h4', link: 'https://example.com/home-utilities/h4' },
+    { name: 'h5', link: 'https://example.com/home-utilities/h5' },
+    { name: 'h6', link: 'https://example.com/home-utilities/h6' }
   ],
   'transportation': [
-    'Car Rental Discount',
-    'Fuel Cashback',
-    'Public Transport Pass',
-    'Taxi Ride Offer',
-    'Car Maintenance Deal',
-    'Bike Rental Discount',
+    { name: 't1', link: 'https://example.com/transportation/t1' },
+    { name: 't2', link: 'https://example.com/transportation/t2' },
+    { name: 't3', link: 'https://example.com/transportation/t3' },
+    { name: 't4', link: 'https://example.com/transportation/t4' },
+    { name: 't5', link: 'https://example.com/transportation/t5' },
+    { name: 't6', link: 'https://example.com/transportation/t6' }
   ],
+
   'food-dining': [
-    'Restaurant Discount',
-    'Food Delivery Offer',
-    'Grocery Cashback',
-    'Cafe Voucher',
-    'Meal Subscription Deal',
-    'Fast Food Combo Offer',
-  ],
+  { name: 'f1', link: 'https://example.com/food-dining/f1' },
+  { name: 'f2', link: 'https://example.com/food-dining/f2' },
+  { name: 'f3', link: 'https://example.com/food-dining/f3' },
+  { name: 'f4', link: 'https://example.com/food-dining/f4' },
+  { name: 'f5', link: 'https://example.com/food-dining/f5' },
+  { name: 'f6', link: 'https://example.com/food-dining/f6' }
+],
+
   'health-insurance': [
-    'Health Checkup Discount',
-    'Insurance Premium Offer',
-    'Pharmacy Cashback',
-    'Dental Care Deal',
-    'Eye Checkup Offer',
-    'Gym Membership Discount',
-  ],
+  { name: 'hi1', link: 'https://example.com/health-insurance/hi1' },
+  { name: 'hi2', link: 'https://example.com/health-insurance/hi2' },
+  { name: 'hi3', link: 'https://example.com/health-insurance/hi3' },
+  { name: 'hi4', link: 'https://example.com/health-insurance/hi4' },
+  { name: 'hi5', link: 'https://example.com/health-insurance/hi5' },
+  { name: 'hi6', link: 'https://example.com/health-insurance/hi6' }
+],
+
   'shopping-entertainment': [
-    'Movie Ticket Discount',
-    'Shopping Voucher',
-    'Concert Ticket Offer',
-    'Gaming Subscription Deal',
-    'Fashion Sale',
-    'Electronics Discount',
-  ],
+  { name: 'se1', link: 'https://example.com/shopping-entertainment/se1' },
+  { name: 'se2', link: 'https://example.com/shopping-entertainment/se2' },
+  { name: 'se3', link: 'https://example.com/shopping-entertainment/se3' },
+  { name: 'se4', link: 'https://example.com/shopping-entertainment/se4' },
+  { name: 'se5', link: 'https://example.com/shopping-entertainment/se5' },
+  { name: 'se6', link: 'https://example.com/shopping-entertainment/se6' }
+],
+
   'education': [
-    'Online Course Discount',
-    'Book Purchase Offer',
-    'Tuition Fee Cashback',
-    'Stationery Discount',
-    'Language Course Deal',
-    'Exam Prep Offer',
-  ],
+  { name: 'e1', link: 'https://example.com/education/e1' },
+  { name: 'e2', link: 'https://example.com/education/e2' },
+  { name: 'e3', link: 'https://example.com/education/e3' },
+  { name: 'e4', link: 'https://example.com/education/e4' },
+  { name: 'e5', link: 'https://example.com/education/e5' },
+  { name: 'e6', link: 'https://example.com/education/e6' }
+],
+
   'other': [
-    'Gift Card Offer',
-    'Charity Donation Discount',
-    'Travel Package Deal',
-    'Event Ticket Discount',
-    'Subscription Service Offer',
-    'Miscellaneous Cashback',
-  ],
+  { name: 'o1', link: 'https://example.com/other/o1' },
+  { name: 'o2', link: 'https://example.com/other/o2' },
+  { name: 'o3', link: 'https://example.com/other/o3' },
+  { name: 'o4', link: 'https://example.com/other/o4' },
+  { name: 'o5', link: 'https://example.com/other/o5' },
+  { name: 'o6', link: 'https://example.com/other/o6' }
+],
+
+
+  
+  // Add more categories similarly...
 };
 
-// Map sub-offers to their respective images with a fallback
- const subOfferImages = {
-   'Electricity Bill Discount': electricityBillDiscountImg,
-   'Water Bill Offer': waterBillOfferImg,
-   'Internet Plan Deal': internetPlanDealImg,
-   'Gas Bill Cashback': gasBillCashbackImg,
-   'Plumbing Service Discount': plumbingServiceDiscountImg,
-   'Car Rental Discount': carRentalDiscountImg ,
-   'Public Transport Pass': publicTransportPassImg,
-   'Taxi Ride Offer': taxiRideOfferImg,
-   'Car Maintenance Deal': carMaintenanceDealImg,
-   'Bike Rental Discount': bikeRentalDiscountImg,
-   'Restaurant Discount': restaurantDiscountImg,
-   'Food Delivery Offer': foodDeliveryOfferImg,
-   'Grocery Cashback': groceryCashbackImg,
-   'Cafe Voucher': cafeVoucherImg,
-   'Meal Subscription Deal': mealSubscriptionDealImg,
-   'Fast Food Combo Offer': fastFoodComboOfferImg,
-   'Health Checkup Discount': healthCheckupDiscountImg,
-   'Insurance Premium Offer': insurancePremiumOfferImg,
-   'Pharmacy Cashback': pharmacyCashbackImg,
-   'Dental Care Deal': dentalCareDealImg,
-   'Eye Checkup Offer': eyeCheckupOfferImg ,
-   'Gym Membership Discount': gymMembershipDiscountImg,
-   'Movie Ticket Discount': movieTicketDiscountImg ,
-   'Shopping Voucher': shoppingVoucherImg,
-   'Concert Ticket Offer': concertTicketOfferImg,
-   'Gaming Subscription Deal': gamingSubscriptionDealImg,
-   'Fashion Sale': fashionSaleImg,
-   'Electronics Discount': electronicsDiscountImg,
-   'Online Course Discount': onlineCourseDiscountImg,
-   'Book Purchase Offer': bookPurchaseOfferImg,
-   'Tuition Fee Cashback': tuitionFeeCashbackImg,
-   'Stationery Discount': stationeryDiscountImg,
-   'Language Course Deal': languageCourseDealImg,
-   'Exam Prep Offer': examPrepOfferImg,
-   'Gift Card Offer': giftCardOfferImg,
-   'Charity Donation Discount': charityDonationDiscountImg,
-   'Travel Package Deal': travelPackageDealImg,
-   'Event Ticket Discount': eventTicketDiscountImg,
-   'Subscription Service Offer': subscriptionServiceOfferImg,
-   'Miscellaneous Cashback': miscellaneousCashbackImg,
- };
-
-
+const subOfferImages = {
+  'h1': h1_Img, 'h2': h2_Img, 'h3': h3_Img, 'h4': h4_Img, 'h5': h5_Img, 'h6': h6_Img,
+  't1': t1_Img, 't2': t2_Img, 't3': t3_Img, 't4': t4_Img, 't5': t5_Img, 't6': t6_Img,
+  'f1': f1_Img, 'f2': f2_Img, 'f3': f3_Img, 'f4': f4_Img, 'f5': f5_Img, 'f6': f6_Img,
+  'hi1': hi1_Img, 'hi2': hi2_Img, 'hi3': hi3_Img, 'hi4': hi4_Img, 'hi5': hi5_Img, 'hi6': hi6_Img,
+  's1': se1_Img, 's2': se2_Img, 's3': se3_Img, 's4': se4_Img, 's5': se5_Img, 's6': se6_Img,
+  'e1': e1_Img, 'e2': e2_Img, 'e3': e3_Img, 'e4': e4_Img, 'e5': e5_Img, 'e6': e6_Img,
+  'o1': o1_Img, 'o2': o2_Img, 'o3': o3_Img, 'o4': o4_Img, 'o5': o5_Img, 'o6': o6_Img,
+};
 
 const SubOffers = () => {
   const { category } = useParams();
@@ -160,30 +139,34 @@ const SubOffers = () => {
 
   const subOffers = subOffersData[category] || [];
 
-  const handleSubOfferClick = (subOffer) => {
-    navigate(`/offers/${category}/${subOffer.toLowerCase().replace(/\s+/g, '-')}`);
+  const handleSubOfferClick = (subOfferLink) => {
+    window.open(subOfferLink, '_blank'); // Open the link in a new tab
+  };
+
+  const handleBackClick = () => {
+    navigate(-1); // Go back to the previous page
   };
 
   return (
     <div className="sub-offers-container">
+      <button className="back-button" onClick={handleBackClick}>Back</button>
       <h2 className="sub-offers-title">{category.replace(/-/g, ' ').toUpperCase()} Offers</h2>
       <div className="sub-offers-grid">
-        {subOffers.map((subOffer) => (
+        {subOffers.map(({ name, link }) => (
           <div
-            key={subOffer}
+            key={name}
             className="sub-offer-card"
-            onClick={() => handleSubOfferClick(subOffer)}
+            onClick={() => handleSubOfferClick(link)}
           >
-            <img src={subOfferImages[subOffer]} alt={subOffer} className="sub-offer-image" />
-            <h3 className="sub-offer-name">{subOffer}</h3>
+            <img src={subOfferImages[name]} alt={name} className="sub-offer-image" />
+            <h3 className="sub-offer-name">{name}</h3>
           </div>
         ))}
-       
         {Array.from({ length: 9 - subOffers.length }).map((_, index) => (
           <div key={`empty-${index}`} className="sub-offer-card empty"></div>
         ))}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

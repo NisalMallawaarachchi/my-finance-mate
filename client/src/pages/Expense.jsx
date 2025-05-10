@@ -1,11 +1,12 @@
 import { CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
 import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import { FaArrowLeft, FaEdit, FaSearch, FaTrash } from 'react-icons/fa';
+import { FaArrowLeft, FaEdit, FaSearch, FaTrash, FaDownload } from 'react-icons/fa'; // Import FaDownload
 import { Link } from 'react-router-dom';
 import AddExpenseModal from '../components/AddExpenseModal';
 import Footer from '../components/Footer';
 import './Expense.css';
+import { jsPDF } from "jspdf";  // Import jsPDF to generate the PDF
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend);
 
@@ -53,7 +54,6 @@ const Expense = () => {
   // Aggregate expenses by date and sum their amounts
   const aggregatedExpenses = expensesForGraph.reduce((acc, expense) => {
     const expenseDate = new Date(expense.date);
-    // Normalize date to YYYY-MM-DD format for grouping
     const dateKey = expenseDate.toISOString().split('T')[0]; // e.g., "2025-03-30"
 
     if (!acc[dateKey]) {
@@ -172,6 +172,37 @@ const Expense = () => {
 
   const displayedExpenses = viewAll ? filteredExpenses : currentMonthExpenses.slice(0, 12);
 
+  // Function to download the graph as a PDF
+  const downloadGraph = () => {
+    const doc = new jsPDF();
+    doc.text("Expense Overview", 10, 10);
+    doc.addImage(document.querySelector('canvas').toDataURL('image/png'), 'PNG', 10, 20, 180, 160);
+    doc.save('expense-overview.pdf');
+  };
+
+  // Function to download the expenses list as a PDF
+  const downloadExpensesList = () => {
+    const doc = new jsPDF();
+    doc.text("Expenses Report", 10, 10);
+    let yPosition = 20;
+
+    // Add table headers
+    doc.text("Name", 10, yPosition);
+    doc.text("Date", 50, yPosition);
+    doc.text("Amount", 100, yPosition);
+    yPosition += 10;
+
+    // Add each expense to the PDF
+    displayedExpenses.forEach((expense) => {
+      doc.text(expense.name, 10, yPosition);
+      doc.text(new Date(expense.date).toLocaleDateString(), 50, yPosition);
+      doc.text(`Rs. ${Math.abs(expense.amount)}`, 100, yPosition);
+      yPosition += 10;
+    });
+
+    doc.save('expenses-list.pdf');
+  };
+
   return (
     <div className="expense-container">
       <div className="top-buttons">
@@ -210,6 +241,13 @@ const Expense = () => {
         <h3>EXPENSE OVERVIEW</h3>
         <p>Track your spending trends over time and gain insights into where your money goes</p>
         <Line data={graphData} options={graphOptions} />
+        
+        {/* Add buttons for graph download and viewing all expenses */}
+        <div className="graph-buttons">
+          <button onClick={downloadGraph} className="download-graph-btn">
+            <FaDownload /> Download Chart
+          </button>
+        </div>
       </div>
 
       <div className="expense-list">
@@ -224,6 +262,9 @@ const Expense = () => {
               View All
             </button>
           )}
+          <button onClick={downloadExpensesList} className="download-expenses-btn">
+            <FaDownload /> 
+          </button>
         </div>
         {displayedExpenses.length === 0 ? (
           <p className="no-expenses">

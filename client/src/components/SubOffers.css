@@ -9,13 +9,14 @@
     margin-bottom: 20px;
     font-size: 30px;
     font-weight: bold;
+    padding-top: -10px;
   }
   
   .sub-offers-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 100px;
-    max-width: 1500px;
+    gap: 20px;
+    max-width: 1800px;
     margin: 0 auto;
   }
   
@@ -35,7 +36,7 @@
   
   .sub-offer-image {
     width: 100%;
-    height: 175px;
+    height: 160px;
     object-fit: cover;
   }
   
@@ -52,3 +53,27 @@
     background-color: transparent;
     box-shadow: none;
   }
+
+
+  .back-button {
+  background-color: #6D28D9; /* Purple color */
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 20px; /* Space from the title */
+  text-align: center;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background-color: #4b1d97; /* Darker purple on hover */
+  transform: translateY(-2px);
+}
+
+.back-button:active {
+  transform: translateY(0); /* Reset transform on click */
+}
