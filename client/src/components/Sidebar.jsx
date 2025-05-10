@@ -140,7 +140,7 @@ const Sidebar = () => {
         {/* Logout Button */}
         <button
           onClick={handleLogout}
-          className={`flex items-center space-x-4 p-3 rounded-md transition-all duration-300 text-white hover:bg-purple-600 w-full ${
+          className={`flex items-center space-x-4 p-3 rounded-md transition-all duration-300 bg-red-500 text-white hover:bg-purple-600 w-full ${
             collapsed ? "justify-center" : ""
           }`}
         >
