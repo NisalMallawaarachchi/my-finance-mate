@@ -69,7 +69,7 @@ export default function SignIn() {
       const data = await res.json();
       dispatch(signInSuccess(data)); // Dispatch success action with user data
       toast.success("Sign-in successful!");
-      setTimeout(() => navigate("/dahboard"), 2000); // Redirect to home page after success
+      setTimeout(() => navigate("/dashboard"), 2000); 
     } catch (err) {
       dispatch(signInFailure(err.message)); // Dispatch failure action with error message
       toast.error(err.message);
