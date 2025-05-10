@@ -11,6 +11,7 @@ import Expense from "./pages/Expense";
 import Offers from "./components/Offer";
 
 import SubOffers from "./components/SubOffers";
+import PrivateRoute from "./components/PrivateRoute";
 
 export default function App() {
   return (
@@ -20,7 +21,11 @@ export default function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/about" element={<About />} />
-        <Route path="/profile" element={<Profile />} />
+        
+        <Route path='/profile' element={<PrivateRoute/>}>
+          <Route path="" element={<Profile />} />
+        </Route>
+
         <Route path="/budget" element={<Budget />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/income" element={<Income />} />
