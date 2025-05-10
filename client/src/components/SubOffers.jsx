@@ -7,7 +7,7 @@ import Footer from './Footer';
 
 import h1_Img from '../assets/1-h/h1.png';
 import h2_Img from '../assets/1-h/h2.png';
-import h3_Img from '../assets/f1.png';
+import h3_Img from '../assets/1-h/h3.png';
 import h4_Img from '../assets/f1.png';
 import h5_Img from '../assets/f1.png';
 import h6_Img from '../assets/f1.png';
@@ -59,7 +59,7 @@ const subOffersData = {
   'home-utilities': [
     { name: 'h1', link: 'https://www.genie.lk/promotions/pay-via-genie-using-any-mastercard-and-get-up-to-25-discount-on-ceb-leco-water-bill-payments/#:~:text=Pay%20via%20genie%20using%20any,Any%20other%20Mastercard%20:%2015%25%20Discount' },
     { name: 'h2', link: 'https://web.facebook.com/hayleyssolar/photos/now-its-easier-to-switch-to-solar-energywith-hayleys-solar-you-can-now-upgrade-t/997453124049693/?_rdc=1&_rdr#' },
-    { name: 'h3', link: 'https://example.com/home-utilities/h3' },
+    { name: 'h3', link: 'https://paints.lk/' },
     { name: 'h4', link: 'https://example.com/home-utilities/h4' },
     { name: 'h5', link: 'https://example.com/home-utilities/h5' },
     { name: 'h6', link: 'https://example.com/home-utilities/h6' }
