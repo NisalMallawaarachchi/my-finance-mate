@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import OfferDescription from "./components/OfferDescription";
 import Offers from "./components/Offers";
 import Sidebar from "./components/Sidebar";
 import SubOffers from "./components/SubOffers";
@@ -68,7 +67,6 @@ function AppContent() {
             <Route path="/expense" element={<Expense />} />
             <Route path="/offers" element={<Offers />} />
             <Route path="/offers/:category" element={<SubOffers />} />
-            <Route path="/offers/:category/:subOffer" element={<OfferDescription />} />
           </Routes>
 
           

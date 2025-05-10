@@ -19,12 +19,12 @@ import t4_Img from '../assets/f1.png';
 import t5_Img from '../assets/f1.png';
 import t6_Img from '../assets/f1.png';
 
-import f1_Img from '../assets/f1.png';
-import f2_Img from '../assets/foodadd2.png';
-import f3_Img from '../assets/foodadd3.png';
-import f4_Img from '../assets/foodadd4.png';
-import f5_Img from '../assets/foodadd5.png';
-import f6_Img from '../assets/foodadd6.png';
+import f1_Img from '../assets/3-f/f3.png';
+import f2_Img from '../assets/3-f/f2.png';
+import f3_Img from '../assets/3-f/f3.png';
+import f4_Img from '../assets/3-f/f4.png';
+import f5_Img from '../assets/3-f/f5.png';
+import f6_Img from '../assets/3-f/f6.png';
 
 import hi1_Img from '../assets/f1.png';
 import hi2_Img from '../assets/f1.png';
