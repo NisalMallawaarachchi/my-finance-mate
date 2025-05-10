@@ -7,6 +7,10 @@ import Profile from "./pages/Profile";
 import Budget from "./pages/Budget";
 import Dashboard from "./pages/Dashboard";
 import Income from "./pages/Income";
+import Expense from "./pages/Expense";
+import Offers from "./components/Offer";
+
+import SubOffers from "./components/SubOffers";
 
 export default function App() {
   return (
@@ -20,6 +24,9 @@ export default function App() {
         <Route path="/budget" element={<Budget />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/income" element={<Income />} />
+        <Route path="/expense" element={<Expense />} />
+            <Route path="/offers" element={<Offers />} />
+            <Route path="/offers/:category" element={<SubOffers />} />
       </Routes>
     </BrowserRouter>
   );
