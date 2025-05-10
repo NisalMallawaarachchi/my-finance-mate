@@ -8,6 +8,7 @@ import authRouter from "./routes/auth.route.js";
 import incomeRoutes from "./routes/income.route.js";
 import cors from "cors";
 import expenseRoutes from './routes/expense.route.js';
+import budgetRouter from "./routes/budget.route.js";
 dotenv.config(); // Load environment variables early
 connectDB();
 
@@ -40,8 +41,8 @@ const loginLimiter = rateLimit({
 app.use("/api/auth", loginLimiter, authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/income", incomeRoutes);
-
 app.use('/api/expense', expenseRoutes);
+app.use("/api/budget", budgetRouter);
 // Handle unknown routes
 app.use("*", (req, res) => {
   res.status(404).json({ success: false, message: "Route not found" });
